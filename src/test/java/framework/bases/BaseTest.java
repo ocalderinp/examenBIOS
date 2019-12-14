@@ -5,6 +5,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import framework.pageObjects.NavigationBarPage;
+import framework.pageObjects.SearchedProductsPage;
 import framework.utils.GetProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,6 +23,9 @@ public class BaseTest {
     protected static ExtentHtmlReporter extentHtmlReporter;
     protected static ExtentReports extentReports;
     protected static ExtentTest extentTest;
+
+    public NavigationBarPage navigationBarPage;
+    public SearchedProductsPage searchedProductsPage;
 
     @BeforeSuite(alwaysRun = true)
     @Parameters("browser")
@@ -39,6 +44,7 @@ public class BaseTest {
 
     @BeforeTest
     public void navegarAInicio() {
+        navigationBarPage = new NavigationBarPage(driver);
         driver.get(url);
     }
 
